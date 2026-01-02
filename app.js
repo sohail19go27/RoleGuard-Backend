@@ -1,8 +1,10 @@
 const config = require('config');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const auth = require('./routes/auth');
+const tasks = require('./routes/tasks');
+const admin = require('./routes/admin');
 const express = require('express');
 const app = express();
 const {User} = require('./models/user');
@@ -26,7 +28,7 @@ db.once("open", async () => {
   let salt = await bcrypt.genSalt(10);
   let password = await bcrypt.hash("admin", salt);
   Promise.all([
-    User.create({name: "admin",email : "admin@admin.com", password : password, role : {isAdmin : true}}),
+    User.create({name: "admin",email : "admin@admin.com", password : password, role : "admin"}),
   ]).then(() => console.log("Added Admin User"));
 });
 app.use(express.json());
@@ -41,7 +43,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/auth', auth);
+app.use('/api/v1/auth', auth);
+app.use('/api/v1/tasks', tasks);
+app.use('/api/v1/admin', admin);
 app.use('*', function(req, res){
   res.status(404).json({error: "Please check the URL.The endpoint doesn't exist"});
 });
