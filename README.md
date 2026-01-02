@@ -1,19 +1,220 @@
-# RoleGuard Backend
+🚀 RoleGuard Backend – JWT Authentication & RBAC API
 
-Scalable REST API with JWT Authentication, Role-Based Access Control (RBAC),
-and CRUD operations built using Node.js, Express, and MongoDB.
+RoleGuard Backend is a Node.js + Express + MongoDB based REST API that implements secure user authentication, JWT-based authorization, Role-Based Access Control (RBAC), and CRUD operations on a secondary entity (Tasks).
 
-## Features
-- User authentication with JWT
-- Role-based access (User/Admin)
-- Task management (CRUD)
-- API versioning (/api/v1)
-- Secure password hashing
-- Postman API documentation
+This project is built as part of a Backend Developer Assignment and demonstrates real-world backend development best practices.
 
-## Tech Stack
-- Node.js
-- Express
-- MongoDB
-- JWT
-- Postman
+📌 Features Implemented
+✅ Authentication & Authorization
+
+User registration and login
+
+Password hashing using bcrypt
+
+JWT token generation on login
+
+JWT verification middleware for protected routes
+
+✅ Role-Based Access Control (RBAC)
+
+Two roles:
+
+user → limited access
+
+admin → admin-only APIs
+
+Role stored inside JWT payload
+
+Admin-only routes protected using middleware
+
+✅ Secondary Entity (Tasks)
+
+Clear User → Tasks (One-to-Many) relationship
+
+Each task belongs to a user
+
+Only the owner can update or delete their tasks
+
+✅ CRUD APIs
+
+Create Task
+
+Get All Tasks (user-specific)
+
+Get Task by ID
+
+Update Task
+
+Delete Task
+
+✅ API Versioning
+
+All APIs are versioned using:
+
+/api/v1
+
+✅ Error Handling & Validation
+
+Input validation using Joi
+
+Meaningful HTTP status codes:
+
+400 → Bad Request
+
+401 → Unauthorized
+
+403 → Forbidden
+
+404 → Not Found
+
+500 → Internal Server Error
+
+✅ API Documentation
+
+Fully documented using Postman Collection
+
+Easy to test APIs locally
+
+🛠 Tech Stack
+
+Backend: Node.js, Express.js
+
+Database: MongoDB (Atlas)
+
+ODM: Mongoose
+
+Authentication: JWT
+
+Password Hashing: bcrypt
+
+Validation: Joi
+
+API Testing: Postman
+
+📂 Project Structure
+RoleGuard/
+├── app.js
+├── config/
+│   └── db.js
+├── controllers/
+│   ├── authController.js
+│   ├── taskController.js
+│   └── adminController.js
+├── middleware/
+│   ├── auth.js
+│   └── admin.js
+├── models/
+│   ├── User.js
+│   └── Task.js
+├── routes/
+│   ├── auth.js
+│   ├── tasks.js
+│   └── admin.js
+├── validator/
+│   └── authValidator.js
+├── postman/
+│   └── RoleGuard.postman_collection.json
+├── package.json
+└── README.md
+
+🔐 API Endpoints
+🔑 Auth APIs
+Method	Endpoint	Description
+POST	/api/v1/auth/register	Register new user
+POST	/api/v1/auth/login	Login & get JWT
+📋 Task APIs (Protected)
+Method	Endpoint	Description
+POST	/api/v1/tasks	Create task
+GET	/api/v1/tasks	Get user tasks
+GET	/api/v1/tasks/:id	Get task by ID
+PATCH	/api/v1/tasks/:id	Update task
+DELETE	/api/v1/tasks/:id	Delete task
+🛡 Admin APIs (Admin Only)
+Method	Endpoint	Description
+GET	/api/v1/admin/users	Get all users
+GET	/api/v1/admin/tasks	Get all tasks
+🔑 Authentication Flow (JWT)
+
+User logs in
+
+Server generates JWT containing:
+
+userId
+
+role
+
+Token is sent to client
+
+Client sends token in headers:
+
+Authorization: Bearer <token>
+
+
+Middleware verifies token for protected routes
+
+⚙️ Environment Setup
+1️⃣ Clone Repository
+git clone https://github.com/sohail19go27/RoleGuard-Backend.git
+cd RoleGuard-Backend
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Create .env file
+PORT=4000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+
+4️⃣ Run Server
+npm start
+
+
+Server runs on:
+
+http://localhost:4000
+
+📮 Postman API Documentation
+
+Postman collection is included in the repo:
+
+/postman/RoleGuard.postman_collection.json
+
+How to Use:
+
+Open Postman
+
+Import the JSON file
+
+Login API automatically saves JWT to environment
+
+Use protected APIs with {{token}}
+
+🧪 Sample Authorization Header
+Authorization: Bearer {{token}}
+
+🧠 Assignment Highlights
+
+✔ Secure authentication with JWT
+
+✔ Clean role-based authorization
+
+✔ Proper database relationships
+
+✔ API versioning
+
+✔ Error handling & validation
+
+✔ Postman documentation
+
+👤 Author
+
+Sohail Ahmad
+Backend Developer (Internship Assignment)
+
+📜 License
+
+This project is licensed under the MIT License.
+
+✅ Final Tip for Submission
+
+Run the project once, test APIs via Postman, and ensure the Postman collection is pushed to GitHub.
