@@ -16,7 +16,7 @@ exports.signup = async (req, res) => {
     await user.save();
 
     const token = user.generateAuthToken();
-    res.header('Authorization', token).send(_.pick(user, ['_id', 'name', 'email']));
+    res.header('Authorization', token).send(_.pick(user, ['_id', 'name', 'email', 'role']));
   }catch(err){
     res.send(err)
   }
@@ -34,7 +34,7 @@ exports.login = async (req, res) => {
 
     const token = user.generateAuthToken();
     const userId = user._id;
-    res.status(200).send({token, userId : userId.toString()});
+    res.status(200).send({token, userId : userId.toString(), role: user.role, name: user.name});
   }catch(err){
     res.send(err)
   }
