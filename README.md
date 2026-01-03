@@ -1,156 +1,84 @@
-<<<<<<< HEAD
-🚀 RoleGuard Backend – JWT Authentication & RBAC API
-=======
-# RoleGuard Backend – JWT Authentication & RBAC API
->>>>>>> bf5aeca (Add assignment-ready README, Postman API docs, and finalize auth logic)
+# 🚀 RoleGuard Backend – JWT Authentication & RBAC API
 
-RoleGuard Backend is a Node.js + Express + MongoDB based REST API that implements secure user authentication, JWT-based authorization, Role-Based Access Control (RBAC), and CRUD operations on a secondary entity (Tasks).
+RoleGuard Backend is a **Node.js + Express + MongoDB** based REST API that implements **secure user authentication**, **JWT-based authorization**, **Role-Based Access Control (RBAC)**, and **CRUD operations on a secondary entity (Tasks)**.
 
-This project is built as part of a Backend Developer Assignment and demonstrates real-world backend development best practices.
+This project is built as part of a **Backend Developer Assignment** and demonstrates real-world backend development best practices.
 
-<<<<<<< HEAD
-📌 Features Implemented
-✅ Authentication & Authorization
+---
 
-User registration and login
+## 📌 Features Implemented
 
-Password hashing using bcrypt
+### ✅ Authentication & Authorization
+- User registration and login  
+- Password hashing using **bcrypt**  
+- JWT token generation on login  
+- JWT verification middleware for protected routes  
 
-JWT token generation on login
+---
 
-JWT verification middleware for protected routes
+### ✅ Role-Based Access Control (RBAC)
+- Two roles:
+  - `user` → limited access  
+  - `admin` → admin-only APIs  
+- Role stored inside JWT payload  
+- Admin-only routes protected using middleware  
 
-✅ Role-Based Access Control (RBAC)
+---
 
-Two roles:
+### ✅ Secondary Entity (Tasks)
+- Clear **User → Tasks (One-to-Many)** relationship  
+- Each task belongs to a user  
+- Only the owner can update or delete their tasks  
 
-user → limited access
+---
 
-admin → admin-only APIs
+### ✅ CRUD APIs
+- Create Task  
+- Get All Tasks (user-specific)  
+- Get Task by ID  
+- Update Task  
+- Delete Task  
 
-Role stored inside JWT payload
+---
 
-Admin-only routes protected using middleware
-
-✅ Secondary Entity (Tasks)
-
-Clear User → Tasks (One-to-Many) relationship
-
-Each task belongs to a user
-
-Only the owner can update or delete their tasks
-
-✅ CRUD APIs
-
-Create Task
-
-Get All Tasks (user-specific)
-
-Get Task by ID
-
-Update Task
-
-Delete Task
-
-✅ API Versioning
-
+### ✅ API Versioning
 All APIs are versioned using:
 
-/api/v1
 
-✅ Error Handling & Validation
 
-Input validation using Joi
+---
 
-Meaningful HTTP status codes:
+### ✅ Error Handling & Validation
+- Input validation using **Joi**  
+- Meaningful HTTP status codes:
+  - `400` → Bad Request  
+  - `401` → Unauthorized  
+  - `403` → Forbidden  
+  - `404` → Not Found  
+  - `500` → Internal Server Error  
 
-400 → Bad Request
+---
 
-401 → Unauthorized
+### ✅ API Documentation
+- Fully documented using **Postman Collection**  
+- Easy to test APIs locally  
 
-403 → Forbidden
+---
 
-404 → Not Found
+## 🛠 Tech Stack
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB (Atlas)  
+- **ODM**: Mongoose  
+- **Authentication**: JWT  
+- **Password Hashing**: bcrypt  
+- **Validation**: Joi  
+- **API Testing**: Postman  
 
-500 → Internal Server Error
+---
 
-✅ API Documentation
+## 📂 Project Structure
 
-Fully documented using Postman Collection
-
-Easy to test APIs locally
-
-🛠 Tech Stack
-
-Backend: Node.js, Express.js
-
-Database: MongoDB (Atlas)
-
-ODM: Mongoose
-
-Authentication: JWT
-
-Password Hashing: bcrypt
-
-Validation: Joi
-
-=======
-# 📌 Features Implemented
-✅ Authentication & Authorization
-
-User registration and login
-Password hashing using bcrypt
-JWT token generation on login
-JWT verification middleware for protected routes
-
-✅ Role-Based Access Control (RBAC)
-Two roles:
-user → limited access
-admin → admin-only APIs
-Role stored inside JWT payload
-Admin-only routes protected using middleware
-
-✅ Secondary Entity (Tasks)
-Clear User → Tasks (One-to-Many) relationship
-Each task belongs to a user
-Only the owner can update or delete their tasks
-
-✅ CRUD APIs
-Create Task
-Get All Tasks (user-specific)
-Get Task by ID
-Update Task
-Delete Task
-
-✅ API Versioning
-All APIs are versioned using:
-/api/v1
-
-✅ Error Handling & Validation
-Input validation using Joi
-Meaningful HTTP status codes:
-400 → Bad Request
-401 → Unauthorized
-403 → Forbidden
-404 → Not Found
-500 → Internal Server Error
-
-✅ API Documentation
-Fully documented using Postman Collection
-Easy to test APIs locally
-
-# 🛠 Tech Stack
-
-Backend: Node.js, Express.js
-Database: MongoDB (Atlas)
-ODM: Mongoose
-Authentication: JWT
-Password Hashing: bcrypt
-Validation: Joi
->>>>>>> bf5aeca (Add assignment-ready README, Postman API docs, and finalize auth logic)
-API Testing: Postman
-
-📂 Project Structure
+```text
 RoleGuard/
 ├── app.js
 ├── config/
@@ -175,159 +103,116 @@ RoleGuard/
 │   └── RoleGuard.postman_collection.json
 ├── package.json
 └── README.md
+```
 
-<<<<<<< HEAD
-🔐 API Endpoints
-🔑 Auth APIs
-Method	Endpoint	Description
-POST	/api/v1/auth/register	Register new user
-POST	/api/v1/auth/login	Login & get JWT
-📋 Task APIs (Protected)
-Method	Endpoint	Description
-POST	/api/v1/tasks	Create task
-GET	/api/v1/tasks	Get user tasks
-GET	/api/v1/tasks/:id	Get task by ID
-PATCH	/api/v1/tasks/:id	Update task
-DELETE	/api/v1/tasks/:id	Delete task
-🛡 Admin APIs (Admin Only)
-Method	Endpoint	Description
-GET	/api/v1/admin/users	Get all users
-GET	/api/v1/admin/tasks	Get all tasks
-🔑 Authentication Flow (JWT)
+---
 
-User logs in
+### 🔑 Auth APIs
+| Method | Endpoint | Description |
+|------|---------|-------------|
+| POST | `/api/v1/auth/register` | Register new user |
+| POST | `/api/v1/auth/login` | Login & get JWT |
 
-Server generates JWT containing:
+---
 
-userId
+### 📋 Task APIs (Protected)
+| Method | Endpoint | Description |
+|------|---------|-------------|
+| POST | `/api/v1/tasks` | Create task |
+| GET | `/api/v1/tasks` | Get user tasks |
+| GET | `/api/v1/tasks/:id` | Get task by ID |
+| PATCH | `/api/v1/tasks/:id` | Update task |
+| DELETE | `/api/v1/tasks/:id` | Delete task |
 
-role
+---
 
-Token is sent to client
+### 🛡 Admin APIs (Admin Only)
+| Method | Endpoint | Description |
+|------|---------|-------------|
+| GET | `/api/v1/admin/users` | Get all users |
+| GET | `/api/v1/admin/tasks` | Get all tasks |
 
-Client sends token in headers:
+---
 
-=======
-# 🔐 API Endpoints
-🔑 Auth APIs
-Method	 Endpoint	            Description
-POST	/api/v1/auth/register	Register new user
-POST	/api/v1/auth/login	    Login & get JWT
+## 🔑 Authentication Flow (JWT)
 
-📋 Task APIs (Protected)
-Method	 Endpoint	        Description
-POST	/api/v1/tasks	    Create task
-GET	    /api/v1/tasks	    Get user tasks
-GET 	/api/v1/tasks/:id	Get task by ID
-PATCH	/api/v1/tasks/:id	Update task
-DELETE	/api/v1/tasks/:id	Delete task
-
-🛡 Admin APIs (Admin Only)
-Method	    Endpoint	        Description
-GET	        /api/v1/admin/users	Get all users
-GET	        /api/v1/admin/tasks	Get all tasks
-
-🔑 Authentication Flow (JWT)
-User logs in
-Server generates JWT containing:
-userId
-role
-Token is sent to client
-Client sends token in headers:
->>>>>>> bf5aeca (Add assignment-ready README, Postman API docs, and finalize auth logic)
-Authorization: Bearer <token>
+1. User logs in  
+2. Server generates JWT containing:
+   - `userId`
+   - `role`
+3. Token is sent to client  
+4. Client sends token in request headers:
 
 
-Middleware verifies token for protected routes
+5. Middleware verifies token for protected routes  
 
-⚙️ Environment Setup
-1️⃣ Clone Repository
+---
+
+## ⚙️ Environment Setup
+
+### 1️⃣ Clone Repository
+```bash
 git clone https://github.com/sohail19go27/RoleGuard-Backend.git
 cd RoleGuard-Backend
 
-2️⃣ Install Dependencies
+
+## ⚙️ Setup & Installation
+
+### 1️⃣ Install Dependencies
+```bash
 npm install
 
-3️⃣ Create .env file
-PORT=4000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+PORT=4000 
+MONGO_URI=your_mongodb_connection_string 
+JWT_SECRET=your_secret_key 
 
-4️⃣ Run Server
+## ▶️ Run Server
+
+### 4️⃣ Start the Server
+```bash
 npm start
 
+---
 
-Server runs on:
-<<<<<<< HEAD
+## 📮 Postman API Documentation
 
-http://localhost:4000
+The Postman collection is included in the repository:
 
-📮 Postman API Documentation
 
-Postman collection is included in the repo:
+### How to Use
+1. Open **Postman**
+2. Click **Import**
+3. Import the JSON collection file
+4. Call the **Login API**
+5. JWT token is automatically saved to the environment
+6. Use protected APIs with `{{token}}`
 
-/postman/RoleGuard.postman_collection.json
+---
 
-How to Use:
+### 🧪 Sample Authorization Header
 
-Open Postman
 
-Import the JSON file
+---
 
-Login API automatically saves JWT to environment
+## 🧠 Assignment Highlights
 
-=======
-http://localhost:4000
+✔ Secure authentication with JWT  
+✔ Clean role-based authorization  
+✔ Proper database relationships  
+✔ API versioning  
+✔ Error handling & validation  
+✔ Postman documentation  
 
-📮 Postman API Documentation
-Postman collection is included in the repo:
-/postman/RoleGuard.postman_collection.json
+---
 
-How to Use:
-Open Postman
-Import the JSON file
-Login API automatically saves JWT to environment
->>>>>>> bf5aeca (Add assignment-ready README, Postman API docs, and finalize auth logic)
-Use protected APIs with {{token}}
+## 👤 Author
 
-🧪 Sample Authorization Header
-Authorization: Bearer {{token}}
+**Sohail Ahmad**  
+Backend Developer  
+(Internship Assignment)
 
-🧠 Assignment Highlights
-<<<<<<< HEAD
+---
 
-✔ Secure authentication with JWT
+## 📜 License
 
-✔ Clean role-based authorization
-
-✔ Proper database relationships
-
-✔ API versioning
-
-✔ Error handling & validation
-
-=======
-✔ Secure authentication with JWT
-✔ Clean role-based authorization
-✔ Proper database relationships
-✔ API versioning
-✔ Error handling & validation
->>>>>>> bf5aeca (Add assignment-ready README, Postman API docs, and finalize auth logic)
-✔ Postman documentation
-
-👤 Author
-
-Sohail Ahmad
-Backend Developer (Internship Assignment)
-
-📜 License
-
-This project is licensed under the MIT License.
-
-✅ Final Tip for Submission
-
-<<<<<<< HEAD
-Run the project once, test APIs via Postman, and ensure the Postman collection is pushed to GitHub.
-=======
-Run the project once, test APIs via Postman, and ensure the Postman collection is pushed to GitHub.
->>>>>>> bf5aeca (Add assignment-ready README, Postman API docs, and finalize auth logic)
+This project is licensed under the **MIT License**.
