@@ -154,22 +154,23 @@ RoleGuard/
 ```bash
 git clone https://github.com/sohail19go27/RoleGuard-Backend.git
 cd RoleGuard-Backend
-
+```
 
 ## ⚙️ Setup & Installation
 
 ### 1️⃣ Install Dependencies
-```bash
+
+```bash 
 npm install
 
 PORT=4000 
 MONGO_URI=your_mongodb_connection_string 
 JWT_SECRET=your_secret_key 
+```
 
 ## ▶️ Run Server
 
-### 4️⃣ Start the Server
-```bash
+### 4️⃣ Start the Server 
 npm start
 
 ---
