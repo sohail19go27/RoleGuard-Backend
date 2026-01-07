@@ -39,3 +39,48 @@ exports.login = async (req, res) => {
     res.send(err)
   }
 }
+
+exports.setupAdmin = async (req, res) => {
+  try {
+    // Check if admin user exists
+    let admin = await User.findOne({ email: 'admin@admin.com' });
+
+    if (admin) {
+      // Admin exists, check if role is correct
+      if (admin.role !== 'admin') {
+        admin.role = 'admin';
+        await admin.save();
+        return res.status(200).json({ 
+          message: 'Admin user found and role updated to admin',
+          email: 'admin@admin.com'
+        });
+      }
+      return res.status(200).json({ 
+        message: 'Admin user already exists with correct role',
+        email: 'admin@admin.com'
+      });
+    }
+
+    // Admin doesn't exist, create new one
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash('admin', salt);
+    
+    admin = new User({
+      name: 'admin',
+      email: 'admin@admin.com',
+      password: hashedPassword,
+      role: 'admin'
+    });
+
+    await admin.save();
+    
+    res.status(201).json({ 
+      message: 'Admin user created successfully',
+      email: 'admin@admin.com',
+      password: 'admin (please change after first login)'
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to setup admin user' });
+  }
+}
