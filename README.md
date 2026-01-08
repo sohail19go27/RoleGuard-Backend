@@ -211,9 +211,3 @@ The Postman collection is included in the repository:
 **Sohail Ahmad**  
 Backend Developer  
 (Internship Assignment)
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
