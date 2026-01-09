@@ -14,7 +14,7 @@ if (!config.get('jwtPrivateKey')) {
   process.exit(1);
 }
 
-mongoose.connect('mongodb://localhost:27017/Posts', { 
+mongoose.connect(process.env.MONGO_URI, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true,
   useCreateIndex: true,
