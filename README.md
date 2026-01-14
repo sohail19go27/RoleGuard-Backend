@@ -210,4 +210,3 @@ The Postman collection is included in the repository:
 
 **Sohail Ahmad**  
 Backend Developer  
-(Internship Assignment)
