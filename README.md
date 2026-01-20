@@ -188,10 +188,6 @@ The Postman collection is included in the repository:
 5. JWT token is automatically saved to the environment
 6. Use protected APIs with `{{token}}`
 
----
-
-### 🧪 Sample Authorization Header
-
 
 ---
 
