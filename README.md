@@ -2,7 +2,7 @@
 
 RoleGuard Backend is a **Node.js + Express + MongoDB** based REST API that implements **secure user authentication**, **JWT-based authorization**, **Role-Based Access Control (RBAC)**, and **CRUD operations on a secondary entity (Tasks)**.
 
-This project demonstrates real-world backend development best practices .
+This project demonstrates real-world backend development best practices and learning.
 
 ---
 
