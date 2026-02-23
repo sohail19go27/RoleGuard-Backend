@@ -161,7 +161,7 @@ cd RoleGuard-Backend
 ### 1️⃣ Install Dependencies
 
 ```bash 
-npm install
+    npm install
 
 PORT=4000 
 MONGO_URI=your_mongodb_connection_string 
