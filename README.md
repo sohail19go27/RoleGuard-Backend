@@ -21,7 +21,7 @@ This project demonstrates real-world backend development best practices and lear
   - `user` → limited access  
   - `admin` → admin-only APIs  
 - Role stored inside JWT payload  
-- Admin-only routes protected using middleware  
+- Admin-only routes protected using middleware.  
 
 ---
 
