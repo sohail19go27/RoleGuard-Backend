@@ -204,5 +204,5 @@ The Postman collection is included in the repository:
 
 ## 👤 Author
 
-**Sohail Ahmad**  
-Backend Developer  
+**Sohail Ahmad.**  
+Full Stack Developer  
