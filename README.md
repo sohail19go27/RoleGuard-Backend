@@ -174,7 +174,7 @@ npm start
 
 ---
 
-## 📮 Postman API Documentation
+## 📮 Postman API Documentation 
 
 The Postman collection is included in the repository:
 
@@ -201,7 +201,7 @@ The Postman collection is included in the repository:
 
 ---
 
-## 👤 Author
+## 👤 Author 
 
 **Sohail Ahmad.**  
 Full Stack Developer(MERN/SpringBoot) 
