@@ -25,7 +25,7 @@ This project demonstrates real-world backend development best practices and lear
 
 ---
 
-### ✅ Secondary Entity (Tasks)
+### ✅ Secondary Entity (Tasks).
 - Clear **User → Tasks (One-to-Many)** relationship  
 - Each task belongs to a user  
 - Only the owner can update or delete their tasks  
